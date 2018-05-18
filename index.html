@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Any Gallery</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/css/swiper.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container">
+       <div class="title">
+            <ul>
+                <li><a href="#" class="link" id="moma">Moma</a></li>
+                <li><a href="#" class="link" id="british-museum">British Museum</a></li>
+                <li> 
+                    <h2 id="home">
+                        Any Gallery
+                    </h2>
+                </li>
+                <li><a href="#" class="link" id="louvre">The Louvre</a></li>
+                <li><a href="#" class="link" id="met">The Met</a></li>
+            </ul>
+        </div>
+    </div>
+</header>    
+<!--  main container -->
+<section class="main-content">
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="items">
+            <!-- Slides -->
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev">
+            <i class="fa fa-arrow-left"></i>
+        </div>
+        <div class="swiper-button-next">
+            <i class="fa fa-arrow-right"></i>
+        </div>    
+    </div>
+</section>
+<!-- scripts -->
+<script src="assets/scripts/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/js/swiper.min.js"></script>
+<script>
+        // html elements
+        const gallery = document.getElementById('moma');
+        const link = document.querySelectorAll('.link')
+        const title = document.getElementById('home');
+
+        // menu links to change background
+        // change background
+        gallery.onclick = function(){
+            document.body.setAttribute('class','moma');
+        }
+        //remove class for demo concept
+        title.onclick = function(){
+            document.body.removeAttribute('class','moma');
+        }
+        //prevent default
+        link.onclick = function(e){
+            e.preventDefault();        
+        }
+
+        // swiper carousel
+        window.onload = function(){
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                loop: true,
+                zoom:true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+
+                // Responsive breakpoints   
+                breakpoints: {  
+                
+                    // when window width is <= 320px     
+                    320: {       
+                        slidesPerView: 1,
+                        spaceBetween: 10     
+                    },     
+                    // when window width is <= 480px     
+                    480: {       
+                        slidesPerView: 2,       
+                        spaceBetween: 20     
+                    },   
+
+                    // when window width is <= 640px     
+                    640: {       
+                        slidesPerView: 3,       
+                        spaceBetween: 30     
+                    } 
+
+                },
+            });
+        }
+</script> 
+<!-- footer -->
+<footer>
+    <div class="logo_holder">
+        <img src="assets/images/pixabay-logo.png" alt="pixabay-logo" >
+    </div>
+</footer>
+</body>
+</html>
